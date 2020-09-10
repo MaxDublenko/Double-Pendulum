@@ -1,0 +1,21 @@
+html {
+  height: 100%;
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+
+/* Color scheme
+   Danger Red (#D9514EFF), Tap Shoe (#2A2B2DFF) and Blue Blossom (#2DA8D8FF)
+*/
+
+body {
+  background: linear-gradient(#D9514EFF, #2DA8D8FF);
+  text-align: center;
+  font-family: 'Grandstander', cursive;
+  color: #2A2B2DFF;
+}
+
+#canvas {
+  border: 1px solid #2A2B2DFF;
+  border-radius: 10px;
+}
