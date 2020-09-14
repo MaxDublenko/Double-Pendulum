@@ -9,6 +9,14 @@
   <body>
     <h1>Double Pendulum</h1>
     <h3>The bottom pendulum traces a line</h3>
+
+    <div class="inputs-left-container">
+      <p class="inputs-left">Top Ball Mass: </p> <div id="la" class="left-arrow"></div> <input class="mid-num" id="tbm" type='text' value="20" readonly> <div id="ra" class="right-arrow"></div>
+      <p class="inputs-left">Bottom Ball Mass: </p> <div id="la1" class="left-arrow"></div> <input class="mid-num" id="bbm" type='text' value="20" readonly> <div id="ra1" class="right-arrow"></div>
+      <p class="inputs-left">Circles or Squares </p> <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
+      <p class="inputs-left">Reset: </p> <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
+    </div>
+
     <canvas id="canvas"></canvas>
   </body>
   <script src="main.js" charset="utf-8"></script>
