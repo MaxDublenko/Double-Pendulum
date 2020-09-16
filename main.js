@@ -11,7 +11,7 @@ let r2 = 200;
 let m1 = 20;
 let m2 = 20;
 let a1 = Math.PI/2;
-let a2 = Math.PI/8;
+let a2 = Math.PI/2;
 let a1_v = 0;
 let a2_v = 0;
 let x1 = 0;
@@ -23,7 +23,7 @@ let size = 0.5;
 let traceCircleR = m2 / 2 * size;
 let traceLine = [];
 
-let speed = 5;
+let speed = 1;
 
 requestAnimationFrame(draw)
 
@@ -31,6 +31,19 @@ ctx.translate(300, 50)
 
 let a1_a = 0;
 let a2_a = 0;
+
+document.getElementById('cos').addEventListener('click', cosHandler)
+
+let cosClicked = 0;
+
+function cosHandler() {
+  if (cosClicked % 2 == 0) {
+    document.getElementById('cosp').innerHTML = "C";
+  } else {
+    document.getElementById('cosp').innerHTML = "S";
+  }
+  cosClicked++;
+}
 
 function draw() {
   ctx.clearRect(-300, -50, cnv.width, cnv.height);
@@ -87,16 +100,17 @@ function draw() {
   });
 
   for (i=0; i<traceLine.length; i++) {
-    //Circles
-    //ctx.beginPath();
-    //ctx.arc(traceLine[i].x, traceLine[i].y, traceCircleR, 0, 2 * Math.PI);
-    //ctx.fill();
-    //Squares
-    ctx.fillRect(traceLine[i].x, traceLine[i].y, traceCircleR, traceCircleR);
+    if (cosClicked % 2 == 0) {
+      ctx.fillRect(traceLine[i].x, traceLine[i].y, traceCircleR, traceCircleR);
+    } else {
+      ctx.beginPath();
+      ctx.arc(traceLine[i].x, traceLine[i].y, traceCircleR, 0, 2 * Math.PI);
+      ctx.fill();
+    }
   }
 
-  a1_v += a1_a / 5 * speed;
-  a2_v += a2_a / 5 * speed;
+  a1_v += a1_a / speed;
+  a2_v += a2_a / speed;
   a1 += a1_v;
   a2 += a2_v;
 
@@ -134,10 +148,73 @@ function rapressed() {
   document.getElementById('tbm').value = m1;
 }
 
+document.getElementById('ra1').addEventListener('click', ra1pressed)
 
+function ra1pressed() {
+  m2 += 1;
+  document.getElementById('bbm').value = m2;
+}
 
+document.getElementById('la2').addEventListener('click', la2pressed)
 
+function la2pressed() {
+  g -= 0.1;
+  if (g <= 0.01) {
+    alert('Gravity is too small')
+    g += 0.1;
+  } else {
+    document.getElementById('g').value = g;
+  }
+  console.log(g)
+}
 
+document.getElementById('ra2').addEventListener('click', ra2pressed)
+
+function ra2pressed() {
+  g += 0.1;
+  document.getElementById('g').value = g;
+}
+
+document.getElementById('ra3').addEventListener('click', ra3pressed)
+
+function ra3pressed() {
+  r1 += 1;
+  document.getElementById('tcl').value = r1;
+}
+
+document.getElementById('la3').addEventListener('click', la3pressed)
+
+function la3pressed() {
+  r1 -= 1;
+  document.getElementById('tcl').value = r1;
+}
+
+document.getElementById('rst').addEventListener('click', rstHandler)
+
+function rstHandler() {
+  r1 = 200;
+  r2 = 200;
+  m1 = 20;
+  m2 = 20;
+  a1 = Math.PI/2;
+  a2 = Math.PI/2;
+  a1_v = 0;
+  a2_v = 0;
+  x1 = 0;
+  y1 = 0;
+  x2 = 0;
+  y2 = 0;
+  g = 1;
+  size = 0.5;
+  traceCircleR = m2 / 2 * size;
+  traceLine = [];
+  a1_a = 0;
+  a2_a = 0;
+  document.getElementById('tbm').value = m1;
+  document.getElementById('bbm').value = m2;
+  document.getElementById('g').value = g;
+  document.getElementById('tcl').value = r1;
+}
 
 
 
